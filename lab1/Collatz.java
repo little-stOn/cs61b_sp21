@@ -5,7 +5,7 @@ public class Collatz {
 
     /** Buggy implementation of nextNumber! */
     public static int nextNumber(int n) {
-        if(n%2==0){
+        if(n%2==0){  /* judge if it is even */
             return n/2;
         }
         else{
