@@ -85,6 +85,9 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T>{
     }
 
     public T removeFirst(){
+        if(isEmpty()){
+            return null;
+        }
         if(size <= array.length/4 && array.length >= 16){
             resizeForRemove(array.length/2);
         }
@@ -104,6 +107,9 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T>{
     }
 
     public T removeLast(){
+        if(isEmpty()){
+            return null;
+        }
         if(size <= array.length/4 && array.length >= 16){
             resizeForRemove(array.length/2);
         }
@@ -123,6 +129,9 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T>{
     }
 
     public T get(int index){
+        if(index < 0 || index >= size){
+            return null;
+        }
         return array[nextFirst + index + 1];
     }
 
