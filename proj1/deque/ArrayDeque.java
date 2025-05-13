@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class ArrayDeque<T> implements Deque<T>,Iterable<T>{
+public class ArrayDeque<T> implements Deque<T> , Iterable<T>{
     private T[] array;
     private int size;
     private int nextFirst;
@@ -15,6 +15,7 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T>{
         nextLast = array.length/2;
     }
 
+    @Override
     public void addFirst(T x) {
         if(size == array.length) {
             resizeForAdd(array.length * 2);
@@ -29,6 +30,7 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T>{
         size++;
     }
 
+    @Override
     public void addLast(T x) {
         if(size == array.length) {
             resizeForAdd(array.length * 2);
@@ -43,13 +45,11 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T>{
         size++;
     }
 
-    public boolean isEmpty(){
-        return size == 0;
-    }
-
+    @Override
     public int size(){
         return size;
     }
+
 
     public void resizeForAdd(int newSize) {
         T[] newArray = (T[]) new Object[newSize];
@@ -76,6 +76,7 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T>{
         array = newArray;
     }
 
+    @Override
     public void printDeque(){
         int count = 0;
         for(int i = nextFirst+1 ; count < size ; count++,i++  ){
@@ -84,6 +85,7 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T>{
         System.out.println();
     }
 
+    @Override
     public T removeFirst(){
         if(isEmpty()){
             return null;
@@ -106,6 +108,7 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T>{
         return rec;
     }
 
+    @Override
     public T removeLast(){
         if(isEmpty()){
             return null;
@@ -128,6 +131,7 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T>{
         return rec;
     }
 
+    @Override
     public T get(int index){
         if(index < 0 || index >= size){
             return null;
@@ -174,27 +178,4 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T>{
         return true;
     }
 
-
-    public static void main(String[] args) {
-        ArrayDeque<Integer> a = new ArrayDeque<Integer>();
-        a.addFirst(1);
-        a.addFirst(2);
-        a.addFirst(4);
-        a.addLast(5);
-        a.addLast(6);
-        a.addLast(7);
-        a.addFirst(9);
-        a.addFirst(5);
-        a.addLast(3);
-        a.removeLast();
-        a.removeFirst();
-        a.removeLast();
-        a.removeFirst();
-        a.removeLast();
-        a.removeFirst();
-        a.removeFirst();
-        System.out.println(a.get(1));
-        System.out.println(a.size());
-        a.printDeque();
-    }
 }
