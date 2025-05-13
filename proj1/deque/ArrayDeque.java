@@ -132,7 +132,8 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T>{
         if(index < 0 || index >= size){
             return null;
         }
-        return array[nextFirst + index + 1];
+        int realIndex = (nextFirst + 1 + index) % array.length;
+        return array[realIndex];
     }
 
     private class ArrayDequeIterator implements Iterator<T> {
