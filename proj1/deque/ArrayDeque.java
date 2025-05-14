@@ -143,12 +143,12 @@ public class ArrayDeque<T> implements Deque<T> , Iterable<T>{
     private class ArrayDequeIterator implements Iterator<T> {
         private int pos;
         ArrayDequeIterator(){
-            pos = nextFirst + 1;
+            pos = 0;
         }
 
         @Override
         public boolean hasNext() {
-            return !(pos == nextLast - 1);
+            return !(pos == size);
         }
 
         public T next(){
